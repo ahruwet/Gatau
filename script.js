@@ -12,10 +12,28 @@ let n = d.match(/C/gi).length; // how many times
 
 let pos = 0; // the position, used to find the indexOf the nth C
 
-setTimeout(() => {
+function playAudio() {
     var audio = document.querySelector('.song');
-    audio.play();
-}, 4000);
+
+    // Memulai pemutaran dengan mute
+    audio.muted = true;
+    audio.play().then(() => {
+        // Setelah dimulai, hilangkan mute
+        audio.muted = false;
+    }).catch(error => {
+        console.log("Audio tidak bisa diputar otomatis, pengguna harus berinteraksi terlebih dahulu.");
+    });
+}
+
+// Memastikan audio diputar setelah ada interaksi pengguna
+window.addEventListener('click', function () {
+    playAudio();
+});
+
+// Memutar audio saat halaman dimuat, jika diperbolehkan oleh browser
+window.addEventListener('load', function () {
+    playAudio();
+});
 
 class subPath {
     constructor(d) {
