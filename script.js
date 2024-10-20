@@ -15,7 +15,7 @@ let pos = 0; // the position, used to find the indexOf the nth C
 setTimeout(() => {
     var audio = document.querySelector('.song');
     audio.play();
-}, 1000);
+}, 4000);
 
 class subPath {
     constructor(d) {
